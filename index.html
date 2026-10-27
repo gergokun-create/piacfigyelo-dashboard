@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Szigorú CSP: csak saját szkript, nincs külső függőség; API-hívás csak a GitHubra. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Piacfigyelő">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f6feb'/%3E%3Cpath d='M6 22l6-7 5 4 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Piacfigyelő</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M6 22l6-7 5 4 9-11"/></svg>
+      <span id="title">Piacfigyelő</span>
+    </div>
+    <div class="top-right">
+      <span id="updated" class="muted"></span>
+      <button id="refresh" class="icon-btn" type="button" aria-label="Frissítés" title="Frissítés">↻</button>
+    </div>
+  </header>
+  <nav class="tabs" aria-label="Fülek">
+    <a href="#/attekintes" data-tab="attekintes">Áttekintés</a>
+    <a href="#/riportok" data-tab="riportok">Riportok</a>
+    <a href="#/statisztika" data-tab="statisztika">Statisztika</a>
+    <a href="#/elemzes" data-tab="elemzes">Elemzés</a>
+  </nav>
+  <main id="view" aria-live="polite"><p class="muted pad">Betöltés…</p></main>
+  <footer id="disclaimer" class="disclaimer"></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
