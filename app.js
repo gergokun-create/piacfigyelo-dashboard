@@ -34,7 +34,9 @@ const yesNo = (b) => (b === true ? "igen" : b === false ? "nem" : "–");
 
 /* ---------- adat ---------- */
 async function load(force) {
-  const r = await fetch("data.json" + (force ? "?t=" + Date.now() : ""), { cache: force ? "no-store" : "default" });
+  /* A GitHub Pages 10 percig cache-elhetőnek jelöli a fájlokat; a no-cache mindig újraellenőrzi (ETag),
+     így a friss adat azonnal látszik, változatlan adatnál pedig nem töltődik le újra. */
+  const r = await fetch("data.json" + (force ? "?t=" + Date.now() : ""), { cache: force ? "no-store" : "no-cache" });
   if (!r.ok) throw new Error("data.json: HTTP " + r.status);
   S.data = await r.json();
   document.getElementById("title").textContent = S.data.title || "Piacfigyelő";
